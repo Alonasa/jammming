@@ -1,0 +1,34 @@
+.main{
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputField {
+    width: 75%;
+    background-color: wheat;
+    box-shadow: rgb(37, 16, 16) 0 8px 15px;
+}
+
+.inputField input {
+    color: #441e1e;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.inputField:hover {
+    outline: 2px solid wheat;
+}
+
+.inputField label {
+    font-weight: bold;
+    color: #7e3a3a;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.button {
+    box-shadow: rgb(37, 16, 16) 0 8px 15px;
+    font-weight: bold;
+    width: 20%;
+}
