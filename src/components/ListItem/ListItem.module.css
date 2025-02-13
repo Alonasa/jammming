@@ -1,0 +1,11 @@
+.item {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: 0 1px 1px #381515,
+    0 2px 1px #f1d2d2,
+    0 5px 1px #381515;
+}
