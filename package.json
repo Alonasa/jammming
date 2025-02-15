@@ -16,9 +16,11 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "axios": "^1.7.9",
+    "gh-pages": "^6.3.0",
+    "path-browserify": "^1.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "styled-components": "^6.1.15",
     "typescript": "^5.7.3",
     "uuid": "^11.0.5",
@@ -49,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack-cli": "^6.0.1"
   }
 }

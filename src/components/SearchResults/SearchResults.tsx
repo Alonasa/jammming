@@ -23,7 +23,7 @@ export const SearchResults = (props: SearchResultsType) => {
     return (
             <CardItem>
                 <h2>{title}</h2>
-                {loading&&<CircularProgress color={"wheat"}/>}
+                {loading&&<CircularProgress color={"wheat"} sx={{margin: "20px auto"}}/>}
                 {tracks?.map(el=>{
                     return(
                         <ListItem key={el.id} artist={el.artists[0].name} title={el.name} callback={logged}/>

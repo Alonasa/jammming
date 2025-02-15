@@ -6,11 +6,12 @@ import styles from "./ListItem.module.css";
 type ListItemType = {
     artist: string,
     title: string,
+    external_urls: {spotify: string},
     callback: () => void
 }
 
 export const ListItem = (props: ListItemType) => {
-    let {artist, title, callback} = props;
+    let {artist, title, external_urls, callback} = props;
     return (
         <div className={styles.item}>
             <div>
