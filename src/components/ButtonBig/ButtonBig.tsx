@@ -4,7 +4,7 @@ import styles from "./ButtonBig.module.css"
 
 type ButtonType = {
     title: string
-    onClick: () => void
+    onClick?: () => void
     className?: string
     style?: string
     isDisabled?: boolean

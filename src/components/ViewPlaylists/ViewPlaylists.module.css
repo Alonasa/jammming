@@ -1,0 +1,6 @@
+.playlistsContainer {
+    width: 45%;
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: visible;
+}

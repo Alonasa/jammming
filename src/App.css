@@ -13,3 +13,15 @@ h1, h2 {
   }
 }
 
+.link {
+  color: #1f9a4b;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #1ed760;
+}
+
+.linkText{
+  margin-bottom: 20px;
+}
