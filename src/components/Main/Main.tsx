@@ -9,11 +9,7 @@ import styles from "./Main.module.css"
 
 const Main = () => {
     let [tracks, setTracks] = useState({
-        items: [{name: "Diamonds", id: 1, artists: [{name: "Rihanna"}]}, {
-            name: "Diam",
-            id: 2,
-            artists: [{name: "Hanna"}]
-        }]
+        items: []
     })
     let [loading, setLoading] = useState(false);
     let [playlist, setPlaylist] = useState([]);
@@ -41,7 +37,7 @@ const Main = () => {
                         .then((res) => {
                             updateData(res)
                         })
-                } else if (error.status === 401){
+                } else if (error.status === 401) {
                     refreshToken()
                     SpotifyApi.getTracks(query)
                         .then((res) => {
@@ -105,8 +101,8 @@ const Main = () => {
                                         setPlaylist([])
                                     })
                             })
-                            .catch(err=>{
-                                if(err.status === 400){
+                            .catch(err => {
+                                if (err.status === 400) {
                                 }
                             })
 
@@ -121,6 +117,8 @@ const Main = () => {
             <h1>Jammming</h1>
             <SearchBar getQuery={setData} onButtonPress={setKeypressData}/>
             <div className={styles.main}>
+
+                {tracks.items.length > 0 &&
                 <div>
                     <SearchResults title={"Results"} tracks={tracks} loading={loading} addToPlaylist={updatePlaylist}/>
                     <div className={styles.pagination}>
@@ -129,6 +127,7 @@ const Main = () => {
                         <Button onClick={moveToNext} disabled={tracks.next === null}>{">"}</Button>
                     </div>
                 </div>
+                }
                 <div>
                     {playlist.length > 0 &&
                     <Playlist tracks={playlist} removeItem={removeItemFromPlaylist}
