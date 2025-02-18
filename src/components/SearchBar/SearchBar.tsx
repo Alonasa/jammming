@@ -1,32 +1,38 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import styles from './SearchBar.module.css';
+import {ChangeEvent, KeyboardEvent, useState} from "react";
+import ButtonBig from "../ButtonBig/ButtonBig.tsx";
 import {Button} from "@mui/material";
-import {ChangeEvent, useState} from "react";
 
 type SearchBarType = {
-    getQuery: (query:string)=>void
+    getQuery: (query: string) => void
+    onButtonPress: (e:  KeyboardEvent<HTMLDivElement>, query: string)=>void
 }
 
 
 export const SearchBar = (props: SearchBarType) => {
-    const {getQuery} = props
+    const {getQuery, onButtonPress} = props
     const [value, setValue] = useState('');
 
-    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
     }
 
-    const onSubmitHandler = ()=> {
-        getQuery(value)
+    const onClickHandler = () => {
+        if (value.length > 0){
+            getQuery(value)
+        }else{
+            alert("You Can't Search for Empty String")
+        }
     }
 
 
     return (
         <div className={styles.main}>
-            <TextField value={value} onChange={onChangeHandler} color="inherit" className={styles.inputField}
+            <TextField value={value} onChange={onChangeHandler} onKeyDown={(e)=>onButtonPress(e, value)}  color="inherit" className={styles.inputField}
                        id="outlined-basic" label="Search song" variant="outlined"/>
-            <Button onClick={onSubmitHandler} className={styles.button} color="inherit" type="button" variant="outlined">Search</Button>
+            <ButtonBig onClick={onClickHandler} title={"Search"} isDisabled={value.length<=0}/>
         </div>
 
     )

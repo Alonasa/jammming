@@ -1,0 +1,14 @@
+.AuthButton {
+    /*margin: 0 auto;*/
+    text-align: center;
+    color: inherit;
+}
+
+.container {
+    width: auto;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

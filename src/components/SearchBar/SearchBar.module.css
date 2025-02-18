@@ -29,8 +29,3 @@
     text-transform: capitalize;
 }
 
-.button {
-    box-shadow: rgb(37, 16, 16) 0 8px 15px;
-    font-weight: bold;
-    width: 20%;
-}

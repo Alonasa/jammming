@@ -5,31 +5,33 @@ import {ListItem} from "../ListItem/ListItem.tsx";
 
 type TracksType = {
     name: string,
-    artists: Array<{name:string}>
+    artists: Array<{ name: string }>
     id: string
 }
 
 type SearchResultsType = {
     title: string,
-    tracks: Array<TracksType>
+    tracks: any
     loading: boolean
+    addToPlaylist: (index: number)=> void
 }
 
 export const SearchResults = (props: SearchResultsType) => {
-    let {title,tracks,loading} = props;
-    const logged = () => {
-        console.log("Button clicked")
+    let {title, tracks, loading, addToPlaylist} = props;
+    const logged = (idx) => {
+        addToPlaylist(idx)
+
     }
     return (
-            <CardItem>
-                <h2>{title}</h2>
-                {loading&&<CircularProgress color={"wheat"} sx={{margin: "20px auto"}}/>}
-                {tracks?.map(el=>{
-                    return(
-                        <ListItem key={el.id} artist={el.artists[0].name} title={el.name} callback={logged}/>
-                    )
-                })}
-            </CardItem>
+        <CardItem>
+            <h2>{title}</h2>
+            {loading && <CircularProgress color={"wheat"} sx={{margin: "20px auto"}}/>}
+            {tracks.items?.map((el, idx) => {
+                return (
+                    <ListItem key={idx} artist={el.artists[0].name} title={el.name} callback={()=>logged(idx)} sign={"+"}/>
+                )
+            })}
+        </CardItem>
 
     )
 }
