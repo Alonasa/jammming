@@ -1,5 +1,6 @@
 import axios, {AxiosInstance} from "axios";
 import qs from 'qs';
+import {DeleteBodyType} from "../components/ViewPlaylists/ViewPlaylists";
 
 export const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 export const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI.toString();
@@ -145,5 +146,14 @@ export const SpotifyApi = {
     },
     getPlaylistItems(playlist_id:string){
         return apiClient.get(`/playlists/${playlist_id}/tracks`)
+    },
+    updatePlaylist(playlist_id:string, title){
+        return apiClient.put(`/playlists/${playlist_id}`,{name: title})
+    },
+    deleteItem(playlist_id: string, data: DeleteBodyType){
+        return apiClient.delete(`/playlists/${playlist_id}/tracks`, {data})
+    },
+    deletePlaylist(playlist_id: string){
+        return apiClient.delete(`playlists/${playlist_id}/followers`)
     }
 }

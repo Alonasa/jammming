@@ -1,9 +1,14 @@
 .main{
     margin-top: 30px;
-    max-width: 45%;
     min-width: 300px;
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (min-width: 700px){
+    .main {
+        max-width: 45%;
+    }
 }
 
 .inputField {

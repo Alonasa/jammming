@@ -12,7 +12,7 @@ type ListItemType = {
 }
 
 export const ListItem = (props: ListItemType) => {
-    let {artist, title, external_urls, callback, sign} = props;
+    let {artist, title, callback, sign} = props;
     return (
         <div className={styles.item}>
             <div>

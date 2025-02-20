@@ -5,13 +5,13 @@ import {ListItem} from "../ListItem/ListItem.tsx";
 
 type TracksType = {
     name: string,
-    artists: Array<{ name: string }>
+    artists: { name: string }[]
     id: string
 }
 
 type SearchResultsType = {
     title: string,
-    tracks: any
+    tracks: TracksType
     loading: boolean
     addToPlaylist: (index: number)=> void
 }

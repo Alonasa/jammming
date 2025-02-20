@@ -1,13 +1,12 @@
 import * as React from 'react';
+import {ChangeEvent, KeyboardEvent, useState} from 'react';
 import TextField from '@mui/material/TextField';
 import styles from './SearchBar.module.css';
-import {ChangeEvent, KeyboardEvent, useState} from "react";
 import ButtonBig from "../ButtonBig/ButtonBig.tsx";
-import {Button} from "@mui/material";
 
 type SearchBarType = {
     getQuery: (query: string) => void
-    onButtonPress: (e:  KeyboardEvent<HTMLDivElement>, query: string)=>void
+    onButtonPress: (e: KeyboardEvent<HTMLDivElement>, query: string) => void
 }
 
 
@@ -20,9 +19,9 @@ export const SearchBar = (props: SearchBarType) => {
     }
 
     const onClickHandler = () => {
-        if (value.length > 0){
+        if (value.length > 0) {
             getQuery(value)
-        }else{
+        } else {
             alert("You Can't Search for Empty String")
         }
     }
@@ -30,9 +29,10 @@ export const SearchBar = (props: SearchBarType) => {
 
     return (
         <div className={styles.main}>
-            <TextField value={value} onChange={onChangeHandler} onKeyDown={(e)=>onButtonPress(e, value)}  color="inherit" className={styles.inputField}
+            <TextField value={value} onChange={onChangeHandler} onKeyDown={(e) => onButtonPress(e, value)}
+                       color="inherit" className={styles.inputField}
                        id="outlined-basic" label="Search song" variant="outlined"/>
-            <ButtonBig onClick={onClickHandler} title={"Search"} isDisabled={value.length<=0}/>
+            <ButtonBig onClick={onClickHandler} title={"Search"} isDisabled={value.length <= 0}/>
         </div>
 
     )

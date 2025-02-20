@@ -3,7 +3,7 @@ import {Button} from "@mui/material";
 import styles from "./ButtonBig.module.css"
 
 type ButtonType = {
-    title: string
+    title?: string
     onClick?: () => void
     className?: string
     style?: string

@@ -6,4 +6,5 @@
     justify-content: flex-end;
     box-shadow: rgb(37, 16, 16) 0 8px 15px!important;
     border: 1px dotted wheat;
+    box-sizing: border-box;
 }

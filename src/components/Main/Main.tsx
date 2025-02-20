@@ -1,8 +1,5 @@
 import React, {useEffect} from 'react';
 import {getToken} from "../../api/spotify-api.ts";
-
-import NewPlaylist from "../NewPlaylist/NewPlaylist.tsx";
-import {Button} from "@mui/material";
 import {Link} from "react-router-dom";
 import ButtonBig from "../ButtonBig/ButtonBig.tsx";
 import styles from "./Main.module.css"
@@ -11,8 +8,6 @@ const Main = () => {
     useEffect(() => {
         getToken()
     }, []);
-
-
 
 
     return (

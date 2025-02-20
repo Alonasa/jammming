@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {CardItem} from "../CardItem/CardItem.tsx";
-import {Button, CircularProgress, Input, TextField} from "@mui/material";
+import {Input} from "@mui/material";
 import {ListItem} from "../ListItem/ListItem.tsx";
 import ButtonBig from "../ButtonBig/ButtonBig.tsx";
 
@@ -11,14 +11,19 @@ type TracksType = {
 }
 
 type SearchResultsType = {
+    currentTitle?: string
     tracks: Array<TracksType>,
     removeItem: (idx: number) => void
     createPlaylist: (title: string) => void
 }
 
 export const Playlist = (props: SearchResultsType) => {
-    let {tracks, removeItem, createPlaylist} = props;
+    let {currentTitle, tracks, removeItem, createPlaylist} = props;
     let [title, setTitle] = useState("");
+
+    useEffect(() => {
+        setTitle(currentTitle);
+    }, [currentTitle]);
 
     const onClickHandler = async () => {
         let res = await createPlaylist(title)
@@ -38,7 +43,7 @@ export const Playlist = (props: SearchResultsType) => {
     }
 
     return (
-        <CardItem>
+        <CardItem style={{width: "45%"}}>
             <Input value={title} onChange={onChangeHandler}
                    style={{margin: "25px 25px 0 25px", color: "wheat", fontWeight: "bold", fontSize: "25px"}}
                    color={"wheat"} placeholder="Add your playlist title"
@@ -49,7 +54,7 @@ export const Playlist = (props: SearchResultsType) => {
                               callback={() => removeTrackHandler(idx)} sign={"-"}/>
                 )
             })}
-            <ButtonBig style={{margin: "25px 30px"}} title={"Save playlist"} onClick={onClickHandler} isDisabled={title.length <= 0}/>
+            <ButtonBig style={{margin: "25px 30px"}} title={"Save playlist"} onClick={onClickHandler} isDisabled={title.length < 1}/>
         </CardItem>
 
     )

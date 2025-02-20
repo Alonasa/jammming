@@ -1,6 +1,22 @@
-.playlistsContainer {
-    width: 45%;
-    height: 80vh;
+.playlistsContainer, .playlistBody {
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
     overflow-y: scroll;
-    overflow-x: visible;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.playlistsWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 700px){
+    .playlistsContainer, .playlistBody{
+        width: 45%;
+        max-height: 80vh;
+    }
+
 }
