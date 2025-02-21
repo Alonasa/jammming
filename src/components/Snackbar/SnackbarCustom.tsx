@@ -10,7 +10,6 @@ export type SnackbarMessage = {
 }
 
 const SnackbarCustom = ({ message }: { message: string }) => {
-    console.log(message)
     const [open, setOpen] = useState(false);
     const [messageInfo, setMessageInfo] = useState<SnackbarMessage | undefined>(
         undefined,

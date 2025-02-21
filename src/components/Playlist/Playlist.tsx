@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {CardItem} from "../CardItem/CardItem.tsx";
-import {Input} from "@mui/material";
+import {Input, TextField} from "@mui/material";
 import {ListItem} from "../ListItem/ListItem.tsx";
 import ButtonBig from "../ButtonBig/ButtonBig.tsx";
 
@@ -11,19 +11,20 @@ type TracksType = {
 }
 
 type SearchResultsType = {
-    currentTitle?: string
+    currentTitle: string
     tracks: Array<TracksType>,
-    removeItem: (idx: number) => void
-    createPlaylist: (title: string) => void
+    isEdit?: boolean
+    removeItem?: (idx: number, title: string) => void
+    createPlaylist?: (title: string) => void
 }
 
 export const Playlist = (props: SearchResultsType) => {
-    let {currentTitle, tracks, removeItem, createPlaylist} = props;
+    let {currentTitle, tracks, removeItem, createPlaylist, isEdit} = props;
     let [title, setTitle] = useState("");
 
     useEffect(() => {
         setTitle(currentTitle);
-    }, [currentTitle]);
+    }, [currentTitle, tracks]);
 
     const onClickHandler = async () => {
         let res = await createPlaylist(title)
@@ -39,22 +40,22 @@ export const Playlist = (props: SearchResultsType) => {
     }
 
     const removeTrackHandler = (id) => {
-        removeItem(id)
+        removeItem(id, currentTitle)
     }
 
     return (
         <CardItem style={{width: "45%"}}>
-            <Input value={title} onChange={onChangeHandler}
+            {isEdit?<Input value={title} onChange={onChangeHandler}
                    style={{margin: "25px 25px 0 25px", color: "wheat", fontWeight: "bold", fontSize: "25px"}}
                    color={"wheat"} placeholder="Add your playlist title"
-                   required/>
+                   required/>:<h3 style={{margin: "25px 20px 25px", color: "wheat", fontWeight: "bold", fontSize: "25px"}}>{title}</h3>}
             {tracks?.map((el, idx) => {
                 return (
                     <ListItem key={el.id} artist={el.artists[0].name} title={el.name}
-                              callback={() => removeTrackHandler(idx)} sign={"-"}/>
+                              callback={() => removeTrackHandler(idx)} sign={"-"} isEdit={isEdit}/>
                 )
             })}
-            <ButtonBig style={{margin: "25px 30px"}} title={"Save playlist"} onClick={onClickHandler} isDisabled={title.length < 1}/>
+            {isEdit&&<ButtonBig style={{margin: "25px 30px"}} title={"Save playlist"} onClick={onClickHandler} isDisabled={title.length < 1}/>}
         </CardItem>
 
     )

@@ -7,7 +7,8 @@
 
 @media screen and (min-width: 700px){
     .main {
-        max-width: 45%;
+        max-width: 100%;
+        margin-bottom: 25px;
     }
 }
 
